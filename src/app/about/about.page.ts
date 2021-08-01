@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 
 import {
@@ -21,30 +21,28 @@ export type ChartOptions = {
   title: ApexTitleSubtitle,
   xaxis: ApexXAxis,
 };
-
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-about',
+  templateUrl: './about.page.html',
+  styleUrls: ['./about.page.scss'],
 })
-export class HomePage {
-  percentage: any = 50
+export class AboutPage implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
-  @ViewChild("chart1") chart1: ChartComponent;
+  
   public chartOptions: Partial<ChartOptions>;
-
-  constructor(private router:Router) {
-
+  percentage: any = 76
+  constructor(private router:Router) { 
+    
     this.chartOptions = {
+      
       stroke: {
         lineCap: "round",
-       // width:10
+        width:5
       },
       series: [this.percentage],
       chart: {
-        width:400,
         type: "radialBar",
-        offsetY: -20,
+        offsetY: -10,
         foreColor: '#e7e7e7',
         stackType: "normal",
         sparkline:
@@ -54,44 +52,47 @@ export class HomePage {
       },
       plotOptions: {
         radialBar: {
-          startAngle: -135,
-          endAngle: 135,
+          startAngle: -90,
+          endAngle: 90,
           track: {
             background: "#e7e7e7",
-            strokeWidth: "97%",
+            strokeWidth: "90%",
             margin: 5, // margin is in pixels
           },
           dataLabels: {
             name: {
               show: true,
-              fontSize: '28px',
+              fontSize: '24px',
               color: "#e7e7e7",
-              offsetY: -1,
-              fontWeight:'bold'
+              offsetY: -20
             },
             value: {
               formatter: function(val) {
                 return 'months left';
               },
               color: "#e7e7e7",
-              fontSize: "18px",
+              fontSize: "20px",
               show: true,
-              offsetY: 15,
-              
+              offsetY: -10,
               
             }
           }
         }
       },
       fill: {
-        colors: ["#0F3050"]
+        colors: ["#2b9111"]
       },
       labels: [this.percentage],
-
     };
+
+    
+  }
+  ngOnInit() {
   }
 
-  goAbout(){
-    this.router.navigateByUrl('/about')
+  
+  goContact(){
+   this.router.navigateByUrl('/contact')
   }
+ 
 }

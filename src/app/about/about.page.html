@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button expand="full" (click)="goContact()">
+        <ion-icon name="star"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>1/2 circle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <apx-chart #chart
+  [series]="chartOptions.series"
+  [chart]="chartOptions.chart"
+  [plotOptions]="chartOptions.plotOptions"
+  [labels]="chartOptions.labels"
+  [fill]="chartOptions.fill"
+  [stroke]="chartOptions.stroke"
+></apx-chart>
+</ion-content>
